@@ -1,0 +1,68 @@
+<!--
+  Exercicio 9.3: GLC para a^n [abc]* c^m b^m c^n d+ com n >= 0 e m > 1
+  Autora: Luisa Caetano Araujo
+
+  Estrutura:
+  - a^n ... c^n (casados)
+  - c^m b^m com m >= 2 (casados)
+  - [abc]* no meio
+  - d+ no final
+
+  V = {S, T, W, X, Y, J, D}
+  T = {a, b, c, d}
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>TD</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>aTc</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>W</right>
+  </production>
+  <production>
+    <left>W</left>
+    <right>XY</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right>aX</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right>bX</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right>cX</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right></right>
+  </production>
+  <production>
+    <left>Y</left>
+    <right>ccJbb</right>
+  </production>
+  <production>
+    <left>J</left>
+    <right>cJb</right>
+  </production>
+  <production>
+    <left>J</left>
+    <right></right>
+  </production>
+  <production>
+    <left>D</left>
+    <right>dD</right>
+  </production>
+  <production>
+    <left>D</left>
+    <right>d</right>
+  </production>
+</structure>

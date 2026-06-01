@@ -1,0 +1,88 @@
+<!--
+  Exercicio 2(a): APD que reconhece {0^n 1^{2n} | n >= 0} por pilha vazia e estado final
+  Autora: Luisa Caetano Araujo
+
+  Descricao:
+  - Para cada 0 lido, empilha dois simbolos A
+  - Para cada 1 lido, desempilha um A
+  - Aceita quando pilha vazia e estado final
+-->
+<structure>
+  <type>pda</type>
+  <automaton>
+    <!-- Estados -->
+    <state id="0" name="q0">
+      <x>100.0</x>
+      <y>150.0</y>
+      <initial/>
+    </state>
+    <state id="1" name="q1">
+      <x>250.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="2" name="q2">
+      <x>400.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="3" name="q3">
+      <x>550.0</x>
+      <y>150.0</y>
+      <final/>
+    </state>
+
+    <!-- Transicoes -->
+    <!-- q0 -> q3: aceita palavra vazia -->
+    <transition>
+      <from>0</from>
+      <to>3</to>
+      <read/>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+
+    <!-- q0 -> q1: le '0', empilha AA sobre Z -->
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>0</read>
+      <pop>Z</pop>
+      <push>AAZ</push>
+    </transition>
+
+    <!-- q1 -> q1: le '0', empilha AA -->
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>0</read>
+      <pop>A</pop>
+      <push>AAA</push>
+    </transition>
+
+    <!-- q1 -> q2: le '1', desempilha A -->
+    <transition>
+      <from>1</from>
+      <to>2</to>
+      <read>1</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q2: le '1', desempilha A -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read>1</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q3: esvazia pilha e vai para estado final -->
+    <transition>
+      <from>2</from>
+      <to>3</to>
+      <read/>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+  </automaton>
+</structure>

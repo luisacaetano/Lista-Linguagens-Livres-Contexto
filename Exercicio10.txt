@@ -1,0 +1,35 @@
+Exercicio 10: Verdadeiro ou Falso
+Autora: Luisa Caetano Araujo
+
+1. (V) Para todo APD existe uma GLC que gera a mesma linguagem.
+   APDs reconhecem LLCDs, que sao subconjunto das LLCs. Toda LLC tem uma GLC.
+
+2. (V) Para todo APN existe uma GLC que gera a mesma linguagem.
+   APNs e GLCs sao equivalentes - ambos definem exatamente as LLCs.
+
+3. (F) Para toda GLC existe um APD que gera a mesma linguagem.
+   APDs so reconhecem LLCDs, nao todas as LLCs.
+   Contraexemplo: {ww^R} e LLC mas nao e LLCD.
+
+4. (V) Para toda GLC existe um APN que gera a mesma linguagem.
+   GLCs e APNs sao equivalentes por definicao.
+
+5. (V) Para todo APD existe um APN que gera a mesma linguagem.
+   Todo APD ja e um APN (caso particular com transicoes deterministicas).
+
+6. (F) Para todo APN existe um APD que gera a mesma linguagem.
+   APNs reconhecem LLCs, APDs so reconhecem LLCDs (subconjunto proprio).
+   Contraexemplo: {ww^R} e reconhecida por APN mas nao por APD.
+
+7. (V) Para toda linguagem regular existe uma gramatica regular.
+   Equivalencia fundamental: AFD = AFN = ER = Gramatica Regular.
+
+8. (V) Para toda LLC existe uma GLC.
+   Por definicao, LLC e a linguagem gerada por alguma GLC.
+
+9. (V) Dada uma G(L), se G e regular entao L e livre de contexto.
+   G regular implica L regular. Regulares sao subconjunto das LLCs.
+
+10. (F) Dada uma G(L), se G nao e regular entao L nao e regular.
+    Uma linguagem pode ter varias gramaticas diferentes.
+    Contraexemplo: a* e regular, mas S -> SS | a | lambda nao e gramatica regular.

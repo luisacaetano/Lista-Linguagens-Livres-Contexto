@@ -1,0 +1,108 @@
+Exercicio 5: Analise de Ambiguidade de GLCs
+Autora: Luisa Caetano Araujo
+
+================================================================================
+1. S -> SS | (S) | ()
+================================================================================
+
+AMBIGUA
+
+Prova com a cadeia "()()()" que possui duas derivacoes esquerdas distintas:
+
+Derivacao 1 (primeiro S se divide):
+S => SS => SSS => ()SS => ()()S => ()()()
+         ^
+         primeiro S vira SS
+
+Derivacao 2 (primeiro S vira terminal):
+S => SS => ()S => ()SS => ()()S => ()()()
+           ^
+           primeiro S vira ()
+
+As arvores de derivacao sao diferentes:
+- Arvore 1: raiz S com filho esquerdo (S->SS) e filho direito (S->())
+- Arvore 2: raiz S com filho esquerdo (S->()) e filho direito (S->SS)
+
+================================================================================
+2. E -> E + E | E * E | a
+================================================================================
+
+AMBIGUA
+
+Prova com a cadeia "a + a * a" que possui duas derivacoes esquerdas distintas:
+
+Derivacao 1:
+E => E + E => a + E => a + E * E => a + a * E => a + a * a
+
+Derivacao 2:
+E => E * E => E + E * E => a + E * E => a + a * E => a + a * a
+
+Duas estruturas diferentes para a mesma expressao.
+
+================================================================================
+3. E -> (E + E) | E * E | a
+================================================================================
+
+AMBIGUA
+
+Prova com a cadeia "a * a * a" que possui duas derivacoes esquerdas distintas:
+
+Derivacao 1:
+E => E * E => E * E * E => a * E * E => a * a * E => a * a * a
+         ^
+         primeiro E vira E * E
+
+Derivacao 2:
+E => E * E => a * E => a * E * E => a * a * E => a * a * a
+              ^
+              primeiro E vira a
+
+Embora a adicao exija parenteses, o operador * continua ambiguo.
+
+================================================================================
+4. E -> (E + E) | (E * E) | a
+================================================================================
+
+NAO AMBIGUA
+
+Argumento:
+Toda operacao (tanto + quanto *) esta obrigatoriamente delimitada por
+parenteses. Isso significa que a estrutura sintatica de cada expressao e
+completamente determinada pelos parenteses presentes na cadeia de entrada.
+
+Para qualquer cadeia w gerada por esta gramatica:
+- Se w = "a", veio de E -> a (unica opcao)
+- Se w = "(... + ...)", veio de E -> (E + E) (unica opcao)
+- Se w = "(... * ...)", veio de E -> (E * E) (unica opcao)
+
+Os parenteses forcam uma unica arvore de derivacao possivel.
+Portanto, a gramatica NAO e ambigua.
+
+================================================================================
+5. A -> AA | aAb | lambda
+================================================================================
+
+AMBIGUA
+
+Prova com a cadeia vazia (lambda) que possui duas derivacoes esquerdas distintas:
+
+Derivacao 1:
+A => lambda
+
+Derivacao 2:
+A => AA => (lambda)A => A => lambda
+           ^
+           primeiro A vira lambda
+
+Outra prova com a cadeia "ab":
+
+Derivacao 1:
+A => aAb => a(lambda)b => ab
+
+Derivacao 2:
+A => AA => aAb A => a(lambda)b A => ab A => ab (lambda) => ab
+           ^
+           primeiro A vira aAb
+
+A producao A -> AA combinada com A -> lambda permite gerar qualquer cadeia
+de multiplas formas, inserindo A's que derivam lambda.

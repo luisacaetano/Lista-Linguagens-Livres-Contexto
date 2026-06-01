@@ -1,0 +1,81 @@
+<!--
+  Exercicio 1(c): APD que reconhece {a^n b^n | n >= 0} por PILHA VAZIA E ESTADO FINAL
+  Autora: Luisa Caetano Araujo
+-->
+<structure>
+  <type>pda</type>
+  <automaton>
+    <state id="0" name="q0">
+      <x>100.0</x>
+      <y>150.0</y>
+      <initial/>
+    </state>
+    <state id="1" name="q1">
+      <x>250.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="2" name="q2">
+      <x>400.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="3" name="q3">
+      <x>550.0</x>
+      <y>150.0</y>
+      <final/>
+    </state>
+
+    <!-- q0 -> q3: aceita palavra vazia -->
+    <transition>
+      <from>0</from>
+      <to>3</to>
+      <read></read>
+      <pop>Z</pop>
+      <push></push>
+    </transition>
+
+    <!-- q0 -> q1: le 'a', empilha A -->
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>Z</pop>
+      <push>AZ</push>
+    </transition>
+
+    <!-- q1 -> q1: le 'a', empilha A -->
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>A</pop>
+      <push>AA</push>
+    </transition>
+
+    <!-- q1 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>1</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push></push>
+    </transition>
+
+    <!-- q2 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push></push>
+    </transition>
+
+    <!-- q2 -> q3: esvazia pilha -->
+    <transition>
+      <from>2</from>
+      <to>3</to>
+      <read></read>
+      <pop>Z</pop>
+      <push></push>
+    </transition>
+  </automaton>
+</structure>

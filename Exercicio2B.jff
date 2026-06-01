@@ -1,0 +1,98 @@
+<!--
+  Exercicio 2(b): APD que reconhece {0^m 1^n | m < n} por pilha vazia e estado final
+  Autora: Luisa Caetano Araujo
+
+  Descricao:
+  - Para cada 0 lido, empilha um A
+  - Para cada 1 lido, desempilha um A (se houver)
+  - Quando pilha esvazia, continua lendo 1s
+  - Aceita se leu pelo menos um 1 apos pilha esvaziar
+-->
+<structure>
+  <type>pda</type>
+  <automaton>
+    <!-- Estados -->
+    <state id="0" name="q0">
+      <x>100.0</x>
+      <y>150.0</y>
+      <initial/>
+    </state>
+    <state id="1" name="q1">
+      <x>250.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="2" name="q2">
+      <x>400.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="3" name="q3">
+      <x>550.0</x>
+      <y>150.0</y>
+      <final/>
+    </state>
+
+    <!-- Transicoes -->
+    <!-- q0 -> q1: le '0', empilha A sobre Z -->
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>0</read>
+      <pop>Z</pop>
+      <push>AZ</push>
+    </transition>
+
+    <!-- q0 -> q3: le '1' direto (m=0, n>=1), esvazia pilha -->
+    <transition>
+      <from>0</from>
+      <to>3</to>
+      <read>1</read>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+
+    <!-- q1 -> q1: le '0', empilha A -->
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>0</read>
+      <pop>A</pop>
+      <push>AA</push>
+    </transition>
+
+    <!-- q1 -> q2: le '1', desempilha A -->
+    <transition>
+      <from>1</from>
+      <to>2</to>
+      <read>1</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q2: le '1', desempilha A -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read>1</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q3: le '1' quando so resta Z (mais 1s que 0s) -->
+    <transition>
+      <from>2</from>
+      <to>3</to>
+      <read>1</read>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+
+    <!-- q3 -> q3: continua lendo 1s com pilha vazia -->
+    <transition>
+      <from>3</from>
+      <to>3</to>
+      <read>1</read>
+      <pop/>
+      <push/>
+    </transition>
+  </automaton>
+</structure>

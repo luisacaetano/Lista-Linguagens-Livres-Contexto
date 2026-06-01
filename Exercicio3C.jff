@@ -1,0 +1,21 @@
+<!--
+  Exercicio 3.3: GLC que gera {wc^n | w in {a, b}*, n = |w|}
+  Autora: Luisa Caetano Araujo
+
+  Exemplos: ε, ac, bc, aacc, abcc, abaccc
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>aSc</right>
+  </production>
+  <production>
+    <left>S</left>
+    <right>bSc</right>
+  </production>
+  <production>
+    <left>S</left>
+    <right></right>
+  </production>
+</structure>

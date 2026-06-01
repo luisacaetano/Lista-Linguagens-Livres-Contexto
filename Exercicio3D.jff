@@ -1,0 +1,41 @@
+<!--
+  Exercicio 3.4: GLC que gera {a^m b^n | m >= 0, n >= 0, m != n}
+  Autora: Luisa Caetano Araujo
+
+  Exemplos: a, b, aa, bb, aab, abb, aaab, abbb
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>A</right>
+  </production>
+  <production>
+    <left>S</left>
+    <right>B</right>
+  </production>
+  <production>
+    <left>A</left>
+    <right>aA</right>
+  </production>
+  <production>
+    <left>A</left>
+    <right>aT</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>Bb</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>Tb</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>aTb</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right></right>
+  </production>
+</structure>

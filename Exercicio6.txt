@@ -1,0 +1,73 @@
+Exercicio 6: Gramatica de Acesso a Base de Dados
+Autora: Luisa Caetano Araujo
+
+Gramatica:
+S -> open C close   (sessao)
+C -> EC | lambda    (ciclo)
+E -> R | W          (execucao)
+R -> read R | lambda (leitura)
+W -> write W | lambda (escrita)
+
+================================================================================
+a) Prova de que a gramatica e AMBIGUA
+================================================================================
+
+A gramatica e ambigua porque a cadeia "open close" possui duas derivacoes
+esquerdas distintas:
+
+Derivacao 1 (C deriva diretamente lambda):
+S => open C close
+  => open lambda close
+  = open close
+
+Derivacao 2 (C deriva EC, depois E deriva lambda via R):
+S => open C close
+  => open EC close
+  => open RC close       [E -> R]
+  => open (lambda)C close [R -> lambda]
+  => open C close
+  => open (lambda) close  [C -> lambda]
+  = open close
+
+As duas derivacoes produzem a mesma cadeia "open close", mas com arvores
+de derivacao diferentes:
+
+Arvore 1: S -> open (C -> lambda) close
+
+Arvore 2: S -> open (C -> E C) close
+                      |   |
+                      R   lambda
+                      |
+                    lambda
+
+A ambiguidade ocorre porque tanto R quanto W podem derivar lambda,
+permitindo inserir E's "vazios" na derivacao.
+
+================================================================================
+b) Derivacao a direita para "open read read write read close"
+================================================================================
+
+Estrutura da cadeia:
+- Primeiro bloco: "read read" (dois reads consecutivos)
+- Segundo bloco: "write" (um write)
+- Terceiro bloco: "read" (um read)
+
+Derivacao a direita (sempre expandindo o nao-terminal mais a direita):
+
+S  => open C close                    [S -> open C close]
+   => open EC close                   [C -> EC]
+   => open EEC close                  [C -> EC]
+   => open EEEC close                 [C -> EC]
+   => open EEE close                  [C -> lambda]
+   => open EER close                  [E -> R] (terceiro E)
+   => open EE read R close            [R -> read R]
+   => open EE read close              [R -> lambda]
+   => open EW read close              [E -> W] (segundo E)
+   => open E write W read close       [W -> write W]
+   => open E write read close         [W -> lambda]
+   => open R write read close         [E -> R] (primeiro E)
+   => open read R write read close    [R -> read R]
+   => open read read R write read close [R -> read R]
+   => open read read write read close [R -> lambda]
+
+Resultado: open read read write read close

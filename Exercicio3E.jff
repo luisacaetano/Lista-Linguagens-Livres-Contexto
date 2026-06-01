@@ -1,0 +1,33 @@
+<!--
+  Exercicio 3.5: GLC que gera {a^n b^m c^k | 0 <= n <= m = n + k}
+  Autora: Luisa Caetano Araujo
+
+  Como m = n + k, a linguagem e a^n b^(n+k) c^k = a^n b^n b^k c^k
+  A gera a^n b^n (pares casados)
+  B gera b^k c^k (pares casados)
+
+  Exemplos: lambda, b, bc, ab, abb, abbc, aabb, aabbbc
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>AB</right>
+  </production>
+  <production>
+    <left>A</left>
+    <right>aAb</right>
+  </production>
+  <production>
+    <left>A</left>
+    <right></right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>bBc</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right></right>
+  </production>
+</structure>

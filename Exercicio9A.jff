@@ -1,0 +1,46 @@
+<!--
+  Exercicio 9.1: GLC para ab(c*a + c*)^n ba c^n com n > 0
+  Autora: Luisa Caetano Araujo
+
+  Estrutura: "ab" + n repeticoes de (c*a | c*) + "ba" + c^n
+
+  V = {S, T, U, P, C}
+  T = {a, b, c}
+
+  Exemplos: ababac (n=1, P=a), abcabac (n=1, P=ca), abccabacc (n=2)
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>abT</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>PUc</right>
+  </production>
+  <production>
+    <left>U</left>
+    <right>PUc</right>
+  </production>
+  <production>
+    <left>U</left>
+    <right>ba</right>
+  </production>
+  <production>
+    <left>P</left>
+    <right>Ca</right>
+  </production>
+  <production>
+    <left>P</left>
+    <right>C</right>
+  </production>
+  <production>
+    <left>C</left>
+    <right>cC</right>
+  </production>
+  <production>
+    <left>C</left>
+    <right></right>
+  </production>
+</structure>

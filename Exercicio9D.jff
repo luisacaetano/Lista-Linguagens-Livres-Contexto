@@ -1,0 +1,55 @@
+<!--
+  Exercicio 9.4: GLC para ab*c?b + d^n a + ca^n c^m com n >= 0 e 2 < m <= 4
+  Autora: Luisa Caetano Araujo
+
+  Interpretacao: (ab*c?b)(d^n a c a^n)(c^m)
+  - ab*c?b: a, zero ou mais b's, c opcional, b
+  - d^n a c a^n: d^n e a^n casados
+  - c^m com m em {3, 4}
+
+  V = {S, P, B, C, Q, R}
+  T = {a, b, c, d}
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>PQR</right>
+  </production>
+  <production>
+    <left>P</left>
+    <right>aBC</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>bB</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right></right>
+  </production>
+  <production>
+    <left>C</left>
+    <right>cb</right>
+  </production>
+  <production>
+    <left>C</left>
+    <right>b</right>
+  </production>
+  <production>
+    <left>Q</left>
+    <right>dQa</right>
+  </production>
+  <production>
+    <left>Q</left>
+    <right>ac</right>
+  </production>
+  <production>
+    <left>R</left>
+    <right>ccc</right>
+  </production>
+  <production>
+    <left>R</left>
+    <right>cccc</right>
+  </production>
+</structure>

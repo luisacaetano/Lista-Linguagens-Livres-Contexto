@@ -1,0 +1,51 @@
+<!--
+  Exercicio 7: GLC para expressoes aritmeticas em C
+  Autora: Luisa Caetano Araujo
+
+  T = {n, +, -, *, /, (, )}
+  V = {E, T, F}
+
+  Precedencia:
+  - Menor: + e - (nivel E)
+  - Maior: * e / (nivel T)
+  - Parenteses agrupam expressoes (nivel F)
+
+  n = numero (token)
+
+  Exemplos: n, n+n, n*n, n+n*n, (n+n)*n, n/n-n
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>E</left>
+    <right>E+T</right>
+  </production>
+  <production>
+    <left>E</left>
+    <right>E-T</right>
+  </production>
+  <production>
+    <left>E</left>
+    <right>T</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>T*F</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>T/F</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>F</right>
+  </production>
+  <production>
+    <left>F</left>
+    <right>(E)</right>
+  </production>
+  <production>
+    <left>F</left>
+    <right>n</right>
+  </production>
+</structure>

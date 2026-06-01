@@ -1,0 +1,84 @@
+<!--
+  Exercicio 1(b): APD que reconhece {a^n b^n | n >= 0} por PILHA VAZIA
+  Autora: Luisa Caetano Araujo
+
+  Descricao:
+  - Aceita quando a pilha fica completamente vazia
+  - q0: estado inicial
+  - q1: estado de leitura de 'a' (empilha A)
+  - q2: estado de leitura de 'b' (desempilha A)
+-->
+<structure>
+  <type>pda</type>
+  <automaton>
+    <!-- Estados -->
+    <state id="0" name="q0">
+      <x>100.0</x>
+      <y>150.0</y>
+      <initial/>
+    </state>
+    <state id="1" name="q1">
+      <x>250.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="2" name="q2">
+      <x>400.0</x>
+      <y>150.0</y>
+    </state>
+
+    <!-- Transicoes -->
+    <!-- q0 -> q0: aceita palavra vazia (desempilha Z) -->
+    <transition>
+      <from>0</from>
+      <to>0</to>
+      <read/>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+
+    <!-- q0 -> q1: le 'a', empilha A sobre Z -->
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>Z</pop>
+      <push>AZ</push>
+    </transition>
+
+    <!-- q1 -> q1: le 'a', empilha A -->
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>A</pop>
+      <push>AA</push>
+    </transition>
+
+    <!-- q1 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>1</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q2: esvazia pilha (desempilha Z) -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read/>
+      <pop>Z</pop>
+      <push/>
+    </transition>
+  </automaton>
+</structure>

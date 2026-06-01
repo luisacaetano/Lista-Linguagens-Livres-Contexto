@@ -1,0 +1,76 @@
+<!--
+  Exercicio 9.2: GLC para a^n (a?cb+)* d^m a c b^m c^n a* com n >= 0 e m > 2
+  Autora: Luisa Caetano Araujo
+
+  Estrutura:
+  - a^n ... c^n (casados)
+  - d^m ... b^m com m >= 3 (casados)
+  - (a?cb+)* no meio
+  - a* no final
+
+  V = {S, T, W, X, R, B, Y, J, Z}
+  T = {a, b, c, d}
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>TZ</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>aTc</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>W</right>
+  </production>
+  <production>
+    <left>W</left>
+    <right>XY</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right>RX</right>
+  </production>
+  <production>
+    <left>X</left>
+    <right></right>
+  </production>
+  <production>
+    <left>R</left>
+    <right>acB</right>
+  </production>
+  <production>
+    <left>R</left>
+    <right>cB</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>bB</right>
+  </production>
+  <production>
+    <left>B</left>
+    <right>b</right>
+  </production>
+  <production>
+    <left>Y</left>
+    <right>dJb</right>
+  </production>
+  <production>
+    <left>J</left>
+    <right>dJb</right>
+  </production>
+  <production>
+    <left>J</left>
+    <right>ddacbb</right>
+  </production>
+  <production>
+    <left>Z</left>
+    <right>aZ</right>
+  </production>
+  <production>
+    <left>Z</left>
+    <right></right>
+  </production>
+</structure>

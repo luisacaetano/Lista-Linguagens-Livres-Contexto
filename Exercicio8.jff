@@ -1,0 +1,47 @@
+<!--
+  Exercicio 8: GLC para declaracoes de variaveis em C
+  Autora: Luisa Caetano Araujo
+
+  T = {int, float, id, ",", ;}
+  V = {S, D, T, L}
+
+  Onde:
+  - S = sequencia de declaracoes
+  - D = declaracao
+  - T = tipo
+  - L = lista de identificadores
+  - id = identificador (token)
+
+  Exemplos: int id; | int id, id, id; | float id, id; | int id; float id;
+-->
+<structure>
+  <type>grammar</type>
+  <production>
+    <left>S</left>
+    <right>D</right>
+  </production>
+  <production>
+    <left>S</left>
+    <right>DS</right>
+  </production>
+  <production>
+    <left>D</left>
+    <right>TL;</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>int</right>
+  </production>
+  <production>
+    <left>T</left>
+    <right>float</right>
+  </production>
+  <production>
+    <left>L</left>
+    <right>id,L</right>
+  </production>
+  <production>
+    <left>L</left>
+    <right>id</right>
+  </production>
+</structure>

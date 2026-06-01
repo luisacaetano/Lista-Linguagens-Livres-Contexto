@@ -1,0 +1,81 @@
+<!--
+  Exercicio 1(a): APD que reconhece {a^n b^n | n >= 0} por ESTADO FINAL
+  Autora: Luisa Caetano Araujo
+
+  Descricao:
+  - q0: estado inicial e final (aceita palavra vazia)
+  - q1: estado de leitura de 'a' (empilha A)
+  - q2: estado de leitura de 'b' (desempilha A)
+  - q3: estado final (pilha vazia, leitura concluida)
+-->
+<structure>
+  <type>pda</type>
+  <automaton>
+    <!-- Estados -->
+    <state id="0" name="q0">
+      <x>100.0</x>
+      <y>150.0</y>
+      <initial/>
+      <final/>
+    </state>
+    <state id="1" name="q1">
+      <x>250.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="2" name="q2">
+      <x>400.0</x>
+      <y>150.0</y>
+    </state>
+    <state id="3" name="q3">
+      <x>550.0</x>
+      <y>150.0</y>
+      <final/>
+    </state>
+
+    <!-- Transicoes -->
+    <!-- q0 -> q1: le 'a', empilha A sobre Z -->
+    <transition>
+      <from>0</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>Z</pop>
+      <push>AZ</push>
+    </transition>
+
+    <!-- q1 -> q1: le 'a', empilha A -->
+    <transition>
+      <from>1</from>
+      <to>1</to>
+      <read>a</read>
+      <pop>A</pop>
+      <push>AA</push>
+    </transition>
+
+    <!-- q1 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>1</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q2: le 'b', desempilha A -->
+    <transition>
+      <from>2</from>
+      <to>2</to>
+      <read>b</read>
+      <pop>A</pop>
+      <push/>
+    </transition>
+
+    <!-- q2 -> q3: transicao vazia quando so resta Z na pilha -->
+    <transition>
+      <from>2</from>
+      <to>3</to>
+      <read/>
+      <pop>Z</pop>
+      <push>Z</push>
+    </transition>
+  </automaton>
+</structure>
